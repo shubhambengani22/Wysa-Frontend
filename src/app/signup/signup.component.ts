@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
       'No-Auth': 'True',
     });
     this.http
-      .post('http://localhost:3000/api/signup', signupData)
+      .post('https://wysa-assessment-backend.herokuapp.com/api/signup', signupData)
       .subscribe((res: any) => {
         if (res['status'] == 422) {
           this.openSnackBar(res['error'], '');
