@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -34,7 +34,10 @@ export class SignupComponent implements OnInit {
       'No-Auth': 'True',
     });
     this.http
-      .post('https://wysa-assessment-backend.herokuapp.com/api/signup', signupData)
+      .post(
+        'https://wysa-assessment-backend.herokuapp.com/api/signup',
+        signupData
+      )
       .subscribe((res: any) => {
         if (res['status'] == 422) {
           this.openSnackBar(res['error'], '');
@@ -43,7 +46,9 @@ export class SignupComponent implements OnInit {
           this.openSnackBar(res['message'], '');
           console.log(res['data']);
           this.router.navigate(['onboarding'], {
-            queryParams: res['data'],
+            state: {
+              userData: res['data'],
+            },
           });
         }
       });

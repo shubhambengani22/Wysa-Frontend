@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -43,7 +43,7 @@ export class OnboardingComponent implements OnInit {
   efficiency: Number = 1.0;
 
   constructor(
-    private router: ActivatedRoute,
+    private router: Router,
     private _snackBar: MatSnackBar,
     private http: HttpClient
   ) {}
@@ -55,12 +55,15 @@ export class OnboardingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.queryParams.subscribe((data) => {
-      if (data) {
-        console.log(data);
-        this.userData = data;
-      }
-    });
+    // this.router.queryParams.subscribe((data) => {
+    //   if (data) {
+    //     console.log(data);
+    //     this.userData = data;
+    //   }
+    // });
+    // var data = this.router.getCurrentNavigation().extras.state;
+    //console.log(this.router.getCurrentNavigation().extras.state);
+    this.userData = history.state.userData;
   }
 
   proceed(step: Number) {
@@ -117,7 +120,10 @@ export class OnboardingComponent implements OnInit {
             };
           }
           this.http
-            .post('https://wysa-assessment-backend.herokuapp.com/api/onboarding', this.sleepData)
+            .post(
+              'https://wysa-assessment-backend.herokuapp.com/api/onboarding',
+              this.sleepData
+            )
             .subscribe((res) => {
               console.log(res);
             });

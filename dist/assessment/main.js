@@ -247,7 +247,7 @@ class OnboardingComponent {
                         };
                     }
                     this.http
-                        .post('http://localhost:3000/api/onboarding', this.sleepData)
+                        .post('https://wysa-assessment-backend.herokuapp.com/api/onboarding', this.sleepData)
                         .subscribe((res) => {
                         console.log(res);
                     });
@@ -401,7 +401,7 @@ class SignupComponent {
             'No-Auth': 'True',
         });
         this.http
-            .post('http://localhost:3000/api/signup', signupData)
+            .post('https://wysa-assessment-backend.herokuapp.com/api/signup', signupData)
             .subscribe((res) => {
             if (res['status'] == 422) {
                 this.openSnackBar(res['error'], '');
@@ -411,7 +411,7 @@ class SignupComponent {
                 this.openSnackBar(res['message'], '');
                 console.log(res['data']);
                 this.router.navigate(['onboarding'], {
-                    queryParams: res['data'],
+                    state: res['data'],
                 });
             }
         });
