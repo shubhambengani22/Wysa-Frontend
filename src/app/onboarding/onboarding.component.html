@@ -1,0 +1,80 @@
+<div class="container form">
+  <ng-container *ngIf="step == 1">
+    <div class="form-group">
+      <label for="nickname"
+        >How long have you been struggling with your sleep?</label
+      ><br />
+      <mat-radio-group
+        aria-label="Select an option"
+        [(ngModel)]="problem_ngModel"
+      >
+        <mat-radio-button value="1">Less than 2 weeks</mat-radio-button><br />
+        <mat-radio-button value="2">2 to 8 weeks</mat-radio-button><br />
+        <mat-radio-button value="3"
+          >More than 8 weeks</mat-radio-button
+        > </mat-radio-group
+      ><br /><br />
+      <button
+        type="button"
+        class="btn btn-primary register"
+        (click)="proceed(1)"
+      >
+        Next
+      </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="step == 2">
+    <div class="form-group">
+      <label for="bedtime">What time do you go to bed?</label><br />
+      <input
+        type="time"
+        id="bedtime"
+        class="form-control"
+        [(ngModel)]="bedtime"
+      /><br />
+      <button
+        type="button"
+        class="btn btn-primary register"
+        (click)="proceed(2)"
+      >
+        Next
+      </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="step == 3">
+    <div class="form-group">
+      <label for="wakeup">What time do you get up?</label><br />
+      <input
+        type="time"
+        id="wakeup"
+        class="form-control"
+        [(ngModel)]="wakeup"
+      /><br />
+      <button
+        type="button"
+        class="btn btn-primary register"
+        (click)="proceed(3)"
+      >
+        Next
+      </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="step == 4">
+    <div class="form-group">
+      <label for="sleep">How many hours do you typically sleep?</label><br />
+      <input
+        type="time"
+        id="sleep"
+        class="form-control"
+        [(ngModel)]="sleepDuration"
+      /><br />
+      <button
+        type="button"
+        class="btn btn-primary register"
+        (click)="proceed(4)"
+      >
+        Next
+      </button>
+    </div>
+  </ng-container>
+</div>

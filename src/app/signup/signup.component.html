@@ -1,0 +1,15 @@
+<div class="container form">
+  <div class="form-group">
+    <label for="nickname">Nickname</label>
+    <input type="text" class="form-control" id="nickname" #nickname /><br />
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" #password /><br />
+    <button
+      type="button"
+      class="btn btn-primary register"
+      (click)="signup(nickname.value, password.value)"
+    >
+      Register
+    </button>
+  </div>
+</div>
