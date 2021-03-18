@@ -117,7 +117,7 @@ export class OnboardingComponent implements OnInit {
             };
           }
           this.http
-            .post('http://localhost:3000/api/onboarding', this.sleepData)
+            .post('https://wysa-assessment-backend.herokuapp.com/api/onboarding', this.sleepData)
             .subscribe((res) => {
               console.log(res);
             });
